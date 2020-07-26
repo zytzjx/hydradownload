@@ -77,9 +77,9 @@ func CreateClientStatus() error {
 	if download.Framework.Version != "" {
 		sync.Sync.Status.Framework.Version = download.Framework.Version
 	}
-	sync.Sync.Status.Phonedll.Deletelist = make([]map[string]interface{}, 0)
+	sync.Sync.Status.Phonedll.Deletelist = make([]interface{}, 0)
 	sync.Sync.Status.Phonedll.Filelist = download.Phonedll.Filelist
-	sync.Sync.Status.Phonetips.Deletelist = make([]map[string]interface{}, 0)
+	sync.Sync.Status.Phonetips.Deletelist = make([]interface{}, 0)
 	sync.Sync.Status.Phonetips.Filelist = download.Phonetips.Filelist
 
 	for i, v := range sync.Sync.Status.Phonedll.Filelist {
