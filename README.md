@@ -16,5 +16,5 @@ clientstatus.json is next time post data.
 
 ./hydradownload -path=/opt/futuredial/hydradownloader
 
-
+./hydradownload
 
