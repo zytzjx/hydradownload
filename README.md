@@ -14,3 +14,7 @@ updatelist.json is temp file. verify download list
 
 clientstatus.json is next time post data.
 
+./hydradownload -path=/opt/futuredial/hydradownloader
+
+
+

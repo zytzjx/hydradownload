@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -100,9 +101,13 @@ func CreateClientStatus() error {
 
 func main() {
 	Log.NewLogger("updatecmc")
-	faillist, err := cmcupdate.DownloadCMC()
+	pathPtr := flag.String("path", "/opt/futuredial/hydradownloader", "download save folder")
+	flag.Parse()
+
+	faillist, err := cmcupdate.DownloadCMC(*pathPtr)
+
 	if err != nil {
-		_, err = cmcupdate.RetryDownload(faillist)
+		_, err = cmcupdate.RetryDownload(faillist, *pathPtr)
 	}
 	if err != nil {
 		os.Exit(1)
