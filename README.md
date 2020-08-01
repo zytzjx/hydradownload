@@ -10,11 +10,11 @@
 
 
 ### redis Key
-hydradownload.running = 1
-hydradownload.status=complete
-hydradownload.framework=[]
-hydradownload.phonedll=[]
-hydradownload.phonetip=[]
+hydradownload.running = 1  
+hydradownload.status=complete  
+hydradownload.framework=[]  
+hydradownload.phonedll=[]  
+hydradownload.phonetip=[]  
 
 
 
