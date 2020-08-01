@@ -8,6 +8,16 @@
 ### command line
 ./hydradownload
 
+
+### redis Key
+hydradownload.running = 1
+hydradownload.status=complete
+hydradownload.framework=[]
+hydradownload.phonedll=[]
+hydradownload.phonetip=[]
+
+
+
 ### detail
 ./update  is created if download. All data will save this folder
 updatelist.json is temp file. verify download list

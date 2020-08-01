@@ -10,6 +10,7 @@ import (
 
 	cmc "github.com/zytzjx/anthenacmc/cmcserverinfo"
 	"github.com/zytzjx/anthenacmc/cmcupdate"
+	dmc "github.com/zytzjx/anthenacmc/datacentre"
 	Log "github.com/zytzjx/anthenacmc/loggersys"
 	_ "github.com/zytzjx/anthenacmc/loggersys"
 	"github.com/zytzjx/anthenacmc/utils"
@@ -100,6 +101,9 @@ func CreateClientStatus() error {
 }
 
 func main() {
+	dmc.Set("hydradownload.running", 1, 0)
+	defer dmc.Set("hydradownload.running", 0, 1)
+
 	Log.NewLogger("updatecmc")
 	pathPtr := flag.String("path", "/opt/futuredial/hydradownloader", "download save folder")
 	flag.Parse()
