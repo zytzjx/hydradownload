@@ -93,14 +93,21 @@ func CreateClientStatus() error {
 		sync.Sync.Status.Phonedll.Filelist[i] = v
 	}
 
-	file, _ := json.MarshalIndent(sync, "", " ")
+	// file, _ := json.MarshalIndent(sync, "", " ")
+	file, _ := json.Marshal(sync)
+	_ = ioutil.WriteFile("clientstatus_temp.json", file, 0644)
 
-	_ = ioutil.WriteFile("clientstatus.json", file, 0644)
+	dmc.Set("hydradownload.clientstatus", string(file), 0)
 
 	return nil
 }
 
 func main() {
+	status, _ := dmc.GetString("hydradownload.status")
+	if status == "pause" {
+		os.Exit(0)
+	}
+
 	dmc.Set("hydradownload.running", 1, 0)
 	defer dmc.Set("hydradownload.running", 0, 1)
 

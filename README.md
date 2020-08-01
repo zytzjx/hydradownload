@@ -15,6 +15,7 @@ hydradownload.status=complete
 hydradownload.framework=[]  
 hydradownload.phonedll=[]  
 hydradownload.phonetip=[]  
+hydradownload.clientstatus={json string}  
 
 
 
