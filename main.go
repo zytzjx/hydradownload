@@ -114,10 +114,13 @@ func main() {
 		_, err = cmcupdate.RetryDownload(faillist, *pathPtr)
 	}
 	if err != nil {
+		dmc.Set("hydradownload.running", 0, 0)
 		os.Exit(1)
 	}
 	if CreateClientStatus() != nil {
+		dmc.Set("hydradownload.running", 0, 0)
 		os.Exit(8)
 	}
+	dmc.Set("hydradownload.running", 0, 0)
 	os.Exit(0)
 }
