@@ -114,7 +114,7 @@ chmod +x hydradownload
 wget https://raw.githubusercontent.com/zytzjx/hydradownload/master/release/autoupdater.py -O autoupdater.py
 wget https://raw.githubusercontent.com/zytzjx/hydradownload/master/release/cmcdeployment.py -O cmcdeployment.py
 python3 autoupdater.py
-
+python3 cmcdeployment.py
 # $ATHENAHOME/hydradownload -path=/opt/futuredial/hydradownloader
 # if [ $? -eq 0 ]; then
 #   echo "Success: hydradownloader."
