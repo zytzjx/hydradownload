@@ -43,7 +43,7 @@ sudo apt install ssh redis -y
 
 # echo "input serial number"
 # echo -e "\e[1;31mThis is red text\e[0m"
-# echo "Please input this product SN:"
+# echo "Please input this product SN: 356209ef-42b5-460f-8711-2a5bbc9a3d7f"
 echo -e "\e[1;31mPlease input this product SN:\e[0m"
 serialnumber=""
 while read -r -n 1 key; do
