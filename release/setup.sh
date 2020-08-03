@@ -128,6 +128,7 @@ python3 cmcdeployment.py
 # fi
 crontab $ATHENAHOME/download_cron
 cp $ATHENAHOME/athena.desktop ~/Desktop/athena.desktop
+chmod +0744 ~/Desktop/athena.desktop
 gio set ~/Desktop/athena.desktop "metadata::trusted" true
 #deploy
 
