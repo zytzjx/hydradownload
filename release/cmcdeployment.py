@@ -21,6 +21,7 @@ if hydradownload_running==b'0' and hydradownload_status==b'complete':
     r.set('hydradownload.status', 'pause')
     # keys = ['hydradownload.framework', 'hydradownload.phonedll']
     # hydradownload.framework
+    framework_ok = True
     syslog.syslog('athena.deployment: read key hydradownload.framework')
     i = r.spop('hydradownload.framework')
     while bool(i):
@@ -33,6 +34,7 @@ if hydradownload_running==b'0' and hydradownload_status==b'complete':
                 os.remove(fn)
         except:
             syslog.syslog('athena.deployment: exception')
+            framework_ok = False
         i = r.spop('hydradownload.framework')
         pass
     # hydradownload.phonedll
@@ -40,9 +42,10 @@ if hydradownload_running==b'0' and hydradownload_status==b'complete':
     # hydradownload.
     syslog.syslog('athena.deployment: read key hydradownload.phonetips')
     # save hydradownload.clientstatus
-    fn = os.path.join(os.environ['ATHENAHOME'], 'clientstatus.json')
-    with open(fn, 'w') as f:
-        f.write(hydradownload_clientstatus.decode('utf-8'))
+    if framework_ok :
+        fn = os.path.join(os.environ['ATHENAHOME'], 'clientstatus.json')
+        with open(fn, 'w') as f:
+            f.write(hydradownload_clientstatus.decode('utf-8'))
 
 syslog.syslog('athena.deployment: delete hydradownload keys')
 for k in r.scan_iter('hydradownload*'):
