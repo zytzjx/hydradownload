@@ -69,7 +69,7 @@ chmod +x $ATHENAHOME/anthenacmc
 #   exit 3
 # fi
 
-sudo apt install python3-pip python3-opencv python3-opencv-apps -y
+sudo apt install python3-pip python3-opencv python3-opencv-apps openjdk-11-jre-headless -y
 sudo apt install gphoto2 libgphoto2-dev qt5-default python3-zbar unzip -y
 sudo pip3 install gphoto2
 sudo pip3 install redis
@@ -91,7 +91,7 @@ sudo usermod -a -G tty $USER
 # pip3 install pyserial
 # pip3 install willow imutils pandas scikit-image
 # pip3 install pyzbar
-# pip3 install python-stdnum
+# pip3 install python-stdnum JPype1
 
 # echo "Need reboot after finish."
 #reboot
