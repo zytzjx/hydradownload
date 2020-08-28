@@ -77,7 +77,7 @@ sudo pip3 install pyqt5 pyqtchart
 sudo pip3 install pyserial
 sudo pip3 install willow imutils pandas scikit-image
 sudo pip3 install pyzbar
-sudo pip3 install python-stdnum
+sudo pip3 install python-stdnum JPype1
 
 # sudo usermod -a -G dialout $curuser
 # sudo usermod -a -G tty $curuser
