@@ -71,6 +71,7 @@ chmod +x $ATHENAHOME/anthenacmc
 
 sudo apt install python3-pip python3-opencv python3-opencv-apps openjdk-11-jre-headless -y
 sudo apt install gphoto2 libgphoto2-dev qt5-default python3-zbar zip unzip -y
+sudo apt install nvidia-cuda-toolkit -y
 sudo pip3 install gphoto2
 sudo pip3 install redis
 sudo pip3 install pyqt5 pyqtchart
@@ -78,6 +79,7 @@ sudo pip3 install pyserial
 sudo pip3 install willow imutils pandas scikit-image
 sudo pip3 install pyzbar
 sudo pip3 install python-stdnum JPype1 pyro4 psutil
+sudo pip3 install tensorflow==2.3.0
 
 # sudo usermod -a -G dialout $curuser
 # sudo usermod -a -G tty $curuser
