@@ -66,5 +66,29 @@ echo "start downloading CMC downloader"
 wget https://github.com/zytzjx/hydradownload/raw/master/hydradownload -O hydradownload
 chmod +x hydradownload
 
+echo "start downloading Athena Framework and Unzip it"
+wget https://raw.githubusercontent.com/zytzjx/hydradownload/master/release/install.py
 python3 install.py
 
+# prepare desktop shortcut
+cp $ATHENAHOME/athena_backup_flow.desktop ~/Desktop/
+chmod +0744 ~/Desktop/athena_backup_flow.desktop
+gio set ~/Desktop/athena_backup_flow.desktop "metadata::trusted" true
+
+cp $ATHENAHOME/athena_frontup_flow.desktop ~/Desktop/
+chmod +0744 ~/Desktop/athena_frontup_flow.desktop
+gio set ~/Desktop/athena_frontup_flow.desktop "metadata::trusted" true
+
+cp $ATHENAHOME/athenaCalibration.desktop ~/Desktop/
+chmod +0744 ~/Desktop/athenaCalibration.desktop
+gio set ~/Desktop/athenaCalibration.desktop "metadata::trusted" true
+
+cp $ATHENAHOME/athenaTakePhotoBackup.desktop ~/Desktop/
+chmod +0744 ~/Desktop/athenaTakePhotoBackup.desktop
+gio set ~/Desktop/athenaTakePhotoBackup.desktop "metadata::trusted" true
+
+cp $ATHENAHOME/AthenaTakePhotoFrontup.desktop ~/Desktop/
+chmod +0744 ~/Desktop/AthenaTakePhotoFrontup.desktop
+gio set ~/Desktop/AthenaTakePhotoFrontup.desktop "metadata::trusted" true
+
+crontab $ATHENAHOME/download_cron
