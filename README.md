@@ -12,7 +12,7 @@
 ### redis Key
 hydradownload.running = 1  
 hydradownload.status=complete  
-hydradownload.framework=[]  
+hydradownload.framework=filepath  
 hydradownload.phonedll=[]  
 hydradownload.phonetip=[]  
 hydradownload.clientstatus={json string}  

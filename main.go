@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"strconv"
 
+	"github.com/juju/fslock"
 	cmc "github.com/zytzjx/anthenacmc/cmcserverinfo"
 	"github.com/zytzjx/anthenacmc/cmcupdate"
 	dmc "github.com/zytzjx/anthenacmc/datacentre"
@@ -37,8 +37,8 @@ func CreateClientStatus() error {
 		return err
 	}
 	cliinfo.Company, _ = dat.Results[0].GetCompanyID()
-	cliinfo.Productid, _ = strconv.Atoi(dat.Results[0].Productid)
-	cliinfo.Solutionid, _ = strconv.Atoi(dat.Results[0].Solutionid)
+	cliinfo.Productid, _ = dat.Results[0].GetProductID()
+	cliinfo.Solutionid, _ = dat.Results[0].GetSolutionID()
 
 	jsonFile, err = os.Open("updatelist.json")
 	// if we os.Open returns an error then handle it
@@ -108,8 +108,17 @@ func main() {
 		os.Exit(0)
 	}
 
+	lock := fslock.New(".hydradownload.lock")
+	err := lock.TryLock()
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	defer lock.Unlock()
+
 	dmc.Set("hydradownload.running", 1, 0)
-	defer dmc.Set("hydradownload.running", 0, 1)
+	defer dmc.Set("hydradownload.running", 0, 0)
 
 	Log.NewLogger("updatecmc")
 	pathPtr := flag.String("path", "/opt/futuredial/hydradownloader", "download save folder")
