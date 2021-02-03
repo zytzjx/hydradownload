@@ -104,6 +104,9 @@ func CreateClientStatus() error {
 }
 
 func main() {
+	Log.NewLogger("updatecmc")
+	Log.Log.Info("version:21.2.3.0; author:Jeffery zhang")
+
 	status, _ := dmc.GetString("hydradownload.status")
 	if status == "pause" {
 		os.Exit(0)
@@ -121,7 +124,6 @@ func main() {
 	dmc.Set("hydradownload.running", 1, 0)
 	defer dmc.Set("hydradownload.running", 0, 0)
 
-	Log.NewLogger("updatecmc")
 	pathPtr := flag.String("path", "/opt/futuredial/hydradownloader", "download save folder")
 	flag.Parse()
 

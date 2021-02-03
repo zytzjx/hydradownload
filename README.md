@@ -29,3 +29,11 @@ clientstatus.json is next time post data.
 
 ./hydradownload
 
+### design
+
+check version and download:   
+if version is same and file exist. return.
+if version is same and file not exist .  continue downloading
+if new version. delete all download file and continue downloading
+
+
