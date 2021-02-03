@@ -32,8 +32,8 @@ clientstatus.json is next time post data.
 ### design
 
 check version and download:   
-if version is same and file exist. return.
-if version is same and file not exist .  continue downloading
-if new version. delete all download file and continue downloading
+if version is same and file exist. return.  
+if version is same and file does not  exist .  continue downloading  
+if new version. delete all download file and continue downloading  
 
 
