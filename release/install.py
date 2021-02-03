@@ -69,6 +69,7 @@ def install():
         with zipfile.ZipFile(fn, 'r') as zip_ref:
             zip_ref.extractall(os.getcwd())
     os.remove(fn)
+    # prepare the folder
     # front-up flow
     fn = os.path.join(os.getcwd(), 'athena.frontup')
     fn1 = os.path.join(os.getcwd(), 'NPI')
