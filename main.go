@@ -10,6 +10,7 @@ import (
 	"github.com/juju/fslock"
 	cmc "github.com/zytzjx/anthenacmc/cmcserverinfo"
 	"github.com/zytzjx/anthenacmc/cmcupdate"
+	"github.com/zytzjx/anthenacmc/datacentre"
 	dmc "github.com/zytzjx/anthenacmc/datacentre"
 	Log "github.com/zytzjx/anthenacmc/loggersys"
 	_ "github.com/zytzjx/anthenacmc/loggersys"
@@ -124,7 +125,16 @@ func main() {
 	pathPtr := flag.String("path", "/opt/futuredial/hydradownloader", "download save folder")
 	flag.Parse()
 
-	faillist, err := cmcupdate.DownloadCMC(*pathPtr)
+	var configInstall cmc.ConfigInstall //map[string]interface{}
+	if err := configInstall.LoadFile("serialconfig.json"); err != nil {
+		Log.Log.Error(err)
+		os.Exit(10)
+	}
+	datacentre.IsEmptySaveSerialConfig(configInstall)
+
+	ver := cmcupdate.GetLastVersion("clientstatus_temp.json")
+
+	faillist, err := cmcupdate.DownloadCMC(*pathPtr, ver)
 
 	if err != nil {
 		_, err = cmcupdate.RetryDownload(faillist, *pathPtr)
