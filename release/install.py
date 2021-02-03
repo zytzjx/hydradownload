@@ -69,6 +69,24 @@ def install():
         with zipfile.ZipFile(fn, 'r') as zip_ref:
             zip_ref.extractall(os.getcwd())
     os.remove(fn)
+    # front-up flow
+    fn = os.path.join(os.getcwd(), 'athena.frontup')
+    fn1 = os.path.join(os.getcwd(), 'NPI')
+    if os.path.exists(fn) and os.path.exists(fn1):
+        os.symlink(fn1, os.path.join(fn,'NPI'), target_is_directory=True)
+    fn1 = os.path.join(os.getcwd(), 'image_process')
+    if os.path.exists(fn) and os.path.exists(fn1):
+        os.symlink(fn1, os.path.join(fn,'image_process'), target_is_directory=True)
+    os.makedirs(os.path.join(fn, 'history'), exist_ok=True)
+    # back-up flow
+    fn = os.path.join(os.getcwd(), 'athena.backup')
+    fn1 = os.path.join(os.getcwd(), 'NPI')
+    if os.path.exists(fn) and os.path.exists(fn1):
+        os.symlink(fn1, os.path.join(fn,'NPI'), target_is_directory=True)
+    fn1 = os.path.join(os.getcwd(), 'image_process')
+    if os.path.exists(fn) and os.path.exists(fn1):
+        os.symlink(fn1, os.path.join(fn,'image_process'), target_is_directory=True)
+    os.makedirs(os.path.join(fn, 'history'), exist_ok=True)
 
 
 if __name__=='__main__':
