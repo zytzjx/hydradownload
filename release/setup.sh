@@ -71,13 +71,14 @@ else
   echo "Failure: Serial Number can not be verify." >&2
   exit 3
 fi
-echo "start downloading CMC downloader"
-wget https://github.com/zytzjx/hydradownload/raw/master/hydradownload -O hydradownload
-chmod +x hydradownload
-
+# echo "start downloading CMC downloader"
+# wget https://github.com/zytzjx/hydradownload/raw/master/hydradownload -O hydradownload
+# chmod +x hydradownload
 echo "start downloading Athena Framework and Unzip it"
-wget https://raw.githubusercontent.com/zytzjx/hydradownload/master/release/install.py
-python3 install.py
+wget https://raw.githubusercontent.com/zytzjx/hydradownload/master/release/hydradownloader.py
+wget https://raw.githubusercontent.com/zytzjx/hydradownload/master/release/cmcdeployment.py
+python3 hydradownloader.py
+python3 cmcdeployment.py
 
 # prepare desktop shortcut
 cp $ATHENAHOME/athena_backup_flow.desktop ~/Desktop/
