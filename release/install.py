@@ -62,7 +62,7 @@ def get_framework(cmc_config, path):
         # post_data['client']['solutionid'] = 0
         # post_data['client']['productid'] = 0
         post_data['sync']['status']['framework']['version'] = ver
-        with open('test.json', 'w') as f:
+        with open('clientsync.json', 'w') as f:
             json.dump(post_data, f)
     return ret, fn
 
