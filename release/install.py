@@ -19,6 +19,7 @@ def get_cmc_config():
 def get_framework(cmc_config, path):
     ret = False
     fn = ''
+    ver = ''
     post_data = {
         'client': {
             'company': cmc_config['companyid'],
@@ -39,6 +40,7 @@ def get_framework(cmc_config, path):
     r = requests.post(f'{url}update/', json=post_data)
     resp = r.json()
     if 'framework' in resp:
+        ver = resp['framework']['version']
         fl = resp['framework']['filelist']
         if len(fl)>0 :
             sz = fl[0]['size']
@@ -55,6 +57,13 @@ def get_framework(cmc_config, path):
                         h = hashlib.md5(bs).hexdigest()
                         if md5.lower() == h.lower():
                             ret = True
+    if ret:
+        # post_data['client']['company'] = 0
+        # post_data['client']['solutionid'] = 0
+        # post_data['client']['productid'] = 0
+        post_data['sync']['status']['framework']['version'] = ver
+        with open('test.json', 'w') as f:
+            json.dump(post_data, f)
     return ret, fn
 
 def call_aptget(command):
@@ -68,26 +77,26 @@ def install():
     if ret and os.path.exists(fn):
         with zipfile.ZipFile(fn, 'r') as zip_ref:
             zip_ref.extractall(os.getcwd())
-    os.remove(fn)
-    # prepare the folder
-    # front-up flow
-    fn = os.path.join(os.getcwd(), 'athena.frontup')
-    fn1 = os.path.join(os.getcwd(), 'NPI')
-    if os.path.exists(fn) and os.path.exists(fn1):
-        os.symlink(fn1, os.path.join(fn,'NPI'), target_is_directory=True)
-    fn1 = os.path.join(os.getcwd(), 'image_process')
-    if os.path.exists(fn) and os.path.exists(fn1):
-        os.symlink(fn1, os.path.join(fn,'image_process'), target_is_directory=True)
-    os.makedirs(os.path.join(fn, 'history'), exist_ok=True)
-    # back-up flow
-    fn = os.path.join(os.getcwd(), 'athena.backup')
-    fn1 = os.path.join(os.getcwd(), 'NPI')
-    if os.path.exists(fn) and os.path.exists(fn1):
-        os.symlink(fn1, os.path.join(fn,'NPI'), target_is_directory=True)
-    fn1 = os.path.join(os.getcwd(), 'image_process')
-    if os.path.exists(fn) and os.path.exists(fn1):
-        os.symlink(fn1, os.path.join(fn,'image_process'), target_is_directory=True)
-    os.makedirs(os.path.join(fn, 'history'), exist_ok=True)
+        # prepare the folder
+        # front-up flow
+        fn = os.path.join(os.getcwd(), 'athena.frontup')
+        fn1 = os.path.join(os.getcwd(), 'NPI')
+        if os.path.exists(fn) and os.path.exists(fn1):
+            os.symlink(fn1, os.path.join(fn,'NPI'), target_is_directory=True)
+        fn1 = os.path.join(os.getcwd(), 'image_process')
+        if os.path.exists(fn) and os.path.exists(fn1):
+            os.symlink(fn1, os.path.join(fn,'image_process'), target_is_directory=True)
+        os.makedirs(os.path.join(fn, 'history'), exist_ok=True)
+        # back-up flow
+        fn = os.path.join(os.getcwd(), 'athena.backup')
+        fn1 = os.path.join(os.getcwd(), 'NPI')
+        if os.path.exists(fn) and os.path.exists(fn1):
+            os.symlink(fn1, os.path.join(fn,'NPI'), target_is_directory=True)
+        fn1 = os.path.join(os.getcwd(), 'image_process')
+        if os.path.exists(fn) and os.path.exists(fn1):
+            os.symlink(fn1, os.path.join(fn,'image_process'), target_is_directory=True)
+        os.makedirs(os.path.join(fn, 'history'), exist_ok=True)
+        os.remove(fn)
 
 
 if __name__=='__main__':
