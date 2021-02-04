@@ -12,15 +12,6 @@ fi
 #     exit 1 
 # fi
 
-# create folder
-sudo mkdir -p /opt/futuredial
-sudo chown $USER:$USER /opt/futuredial
-sudo mkdir -p /opt/futuredial/athena.release
-sudo mkdir -p /opt/futuredial/hydradownloader
-sudo chown $USER:$USER /opt/futuredial/athena.release
-sudo chown $USER:$USER /opt/futuredial/hydradownloader
-ATHENAHOME=/opt/futuredial/athena.release
-
 # echo "input serial number"
 # echo -e "\e[1;31mThis is red text\e[0m"
 # echo "Please input this product SN:"
@@ -34,6 +25,16 @@ while read -r -n 1 key; do
    serialnumber+=$key
 done
 echo 'Install Athena using serial number: ' $serialnumber
+
+# create folder
+sudo mkdir -p /opt/futuredial
+sudo chown $USER:$USER /opt/futuredial
+sudo mkdir -p /opt/futuredial/athena.release
+sudo mkdir -p /opt/futuredial/hydradownloader
+sudo chown $USER:$USER /opt/futuredial/athena.release
+sudo chown $USER:$USER /opt/futuredial/hydradownloader
+ATHENAHOME=/opt/futuredial/athena.release
+
 
 sudo apt-get update
 sudo apt install python3-pip python3-opencv python3-opencv-apps openjdk-11-jre-headless -y
