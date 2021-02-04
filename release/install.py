@@ -77,6 +77,7 @@ def install():
     if ret and os.path.exists(fn):
         with zipfile.ZipFile(fn, 'r') as zip_ref:
             zip_ref.extractall(os.getcwd())
+        os.remove(fn)
         # prepare the folder
         # front-up flow
         fn = os.path.join(os.getcwd(), 'athena.frontup')
@@ -96,7 +97,6 @@ def install():
         if os.path.exists(fn) and os.path.exists(fn1):
             os.symlink(fn1, os.path.join(fn,'image_process'), target_is_directory=True)
         os.makedirs(os.path.join(fn, 'history'), exist_ok=True)
-        os.remove(fn)
 
 
 if __name__=='__main__':
