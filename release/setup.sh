@@ -51,6 +51,12 @@ sudo pip3 install tensorflow==2.3.0
 
 # cd /opt/futuredial/athena.release
 cd $ATHENAHOME
+id=$(sudo dmidecode -s system-uuid)
+if [ -z "$id" ]
+then
+   id=$(uuidgen)
+fi
+echo $id | tee machine-id
 
 echo "start downloading CMC tool"
 wget https://github.com/zytzjx/anthenacmc/raw/master/anthenacmc -O anthenacmc
