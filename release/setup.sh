@@ -81,6 +81,12 @@ wget https://raw.githubusercontent.com/zytzjx/hydradownload/master/release/cmcde
 python3 hydradownloader.py
 python3 cmcdeployment.py
 
+# make link
+ln -s $ATHENAHOME/NPI $ATHENAHOME/athena.frontup/NPI
+ln -s $ATHENAHOME/image_process $ATHENAHOME/athena.frontup/image_process
+ln -s $ATHENAHOME/NPI $ATHENAHOME/athena.backup/NPI
+ln -s $ATHENAHOME/image_process $ATHENAHOME/athena.backup/image_process
+
 # prepare desktop shortcut
 cp $ATHENAHOME/athena_backup_flow.desktop ~/Desktop/
 chmod +0744 ~/Desktop/athena_backup_flow.desktop
