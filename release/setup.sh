@@ -57,6 +57,9 @@ then
    id=$(uuidgen)
 fi
 echo $id | tee machine-id
+touch hydradownloader.lck
+touch athena.lck
+touch cmcdeployment.lck
 
 echo "start downloading CMC tool"
 wget https://github.com/zytzjx/anthenacmc/raw/master/anthenacmc -O anthenacmc
