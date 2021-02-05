@@ -67,6 +67,9 @@ def create_empty_cleint_sync(cmc_config):
                 'framework': {
                     'version': '',
                     'filelist': []
+                },
+                'deviceprofile': {
+                    'filelist': []
                 }
             }
         },
@@ -76,7 +79,7 @@ def create_empty_cleint_sync(cmc_config):
 
 def load_client_sync(cmc_config):
     ok = False
-    log.info(f'load_cmc_config: ++ home={athena_home}')
+    log.info(f'load_client_sync: ++ home={athena_home}')
     fn = os.path.join(athena_home, 'clientsync.json')
     client_sync = {}
     if not os.path.exists(fn):
@@ -86,9 +89,11 @@ def load_client_sync(cmc_config):
     if os.path.exists(fn):
         with open(fn) as f:
             client_sync = json.load(f)
+            ok = True
     else:
         client_sync = create_empty_cleint_sync(cmc_config)
-    log.info(f'load_cmc_config: -- return {ok} dict={client_sync}')
+        ok = True
+    log.info(f'load_client_sync: -- return {ok} dict={client_sync}')
     return ok, client_sync
 
 def cmc_check_in(url, client_sync):
@@ -173,7 +178,23 @@ def handle_setings(data):
     pass
 
 def handle_deviceprofile(data):
+    global rc
     log.info(f'handle_deviceprofile: ++ data={data}')
+    all_ok = True
+    if 'filelist' in data and isinstance(data['filelist'], list):
+        for fd in data['filelist']:
+            url = fd['url'] if 'url' in fd else ''
+            if bool(url):
+                fn = os.path.basename(url)
+                local_fn = os.path.join(hydra_download_temp, fn)
+                ok = download_file(fd, local_fn)
+                all_ok &= ok
+                if ok:
+                    fd['local'] = local_fn
+    if all_ok:
+        fn = os.path.join(hydra_download_temp, 'deviceprofile.json')
+        with open(fn, 'w') as f:
+            json.dump(data, f)
     pass
 
 def start_download():
