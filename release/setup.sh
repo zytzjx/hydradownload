@@ -30,9 +30,9 @@ echo 'Install Athena using serial number: ' $serialnumber
 sudo mkdir -p /opt/futuredial
 sudo chown $USER:$USER /opt/futuredial
 sudo mkdir -p /opt/futuredial/athena.release
-sudo mkdir -p /opt/futuredial/hydradownloader
+sudo mkdir -p /opt/futuredial/hydradownload
 sudo chown $USER:$USER /opt/futuredial/athena.release
-sudo chown $USER:$USER /opt/futuredial/hydradownloader
+sudo chown $USER:$USER /opt/futuredial/hydradownload
 ATHENAHOME=/opt/futuredial/athena.release
 
 
