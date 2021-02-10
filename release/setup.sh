@@ -63,6 +63,16 @@ touch hydradownloader.lck
 touch athena.lck
 touch cmcdeployment.lck
 
+# disable autoupdate
+cat > 20auto-upgrades << "EOF2"
+APT::Periodic::Update-Package-Lists "0";
+APT::Periodic::Download-Upgradeable-Packages "0";
+APT::Periodic::AutocleanInterval "0";
+APT::Periodic::Unattended-Upgrade "1";
+EOF2
+
+sudo cp 20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
+
 echo "start downloading CMC tool"
 wget https://github.com/zytzjx/anthenacmc/raw/master/anthenacmc -O anthenacmc
 chmod +x anthenacmc
