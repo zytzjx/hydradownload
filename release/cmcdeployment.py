@@ -24,7 +24,7 @@ my_handler.setLevel(logging.INFO)
 log = logging.getLogger('cmcdeployment')
 log.setLevel(logging.INFO)
 log.addHandler(my_handler)
-log.addHandler(logging.StreamHandler())
+log.addHandler(logging.StreamHandler(sys.stdout))
 
 def deploy_deviceprofile():
     log.info('deploy_deviceprofile: ++')
