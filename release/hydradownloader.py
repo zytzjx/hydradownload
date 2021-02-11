@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import redis
 import fcntl
@@ -19,7 +20,7 @@ my_handler.setLevel(logging.INFO)
 log = logging.getLogger('hydradownloader')
 log.setLevel(logging.INFO)
 log.addHandler(my_handler)
-log.addHandler(logging.StreamHandler())
+log.addHandler(logging.StreamHandler(sys.stdout))
 
 def get_host_uuid():
     ret = ''
@@ -105,7 +106,7 @@ def cmc_check_in(url, client_sync):
         resp = r.json()
         ok = True
     else: 
-        log.error(f'Fail to post to server: {r}')
+        log.info(f'Fail to post to server: {r}')
     log.info(f'cmc_check_in: ++ ok={ok}, resp={resp}')        
     return ok, resp
 
@@ -137,11 +138,11 @@ def download_file(remote, local):
                     if md5.lower() == h.lower():
                         ok = True
                     else:
-                        log.error(f'download_file: ERROR checksum incorrect.')                    
+                        log.info(f'download_file: ERROR checksum incorrect.')                    
             else:
-                log.error(f'download_file: ERROR size incorrect.')                    
+                log.info(f'download_file: ERROR size incorrect.')                    
     else:
-        log.error(f'download_file: ERROR missing url')    
+        log.info(f'download_file: ERROR missing url')    
     log.info(f'download_file: -- return={ok}')
     return ok
 
