@@ -33,6 +33,7 @@ sudo mkdir -p /opt/futuredial/athena.release
 sudo mkdir -p /opt/futuredial/hydradownload
 sudo chown $USER:$USER /opt/futuredial/athena.release
 sudo chown $USER:$USER /opt/futuredial/hydradownload
+sudo usermod -a -G dialout $USER
 ATHENAHOME=/opt/futuredial/athena.release
 
 
