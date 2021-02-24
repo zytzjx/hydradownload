@@ -38,7 +38,7 @@ ATHENAHOME=/opt/futuredial/athena.release
 
 
 sudo apt-get update
-sudo apt install ssh redis -y
+sudo apt install ssh redis curl -y
 sudo apt install python3-pip python3-opencv python3-opencv-apps openjdk-11-jre-headless -y
 sudo apt install gphoto2 libgphoto2-dev qt5-default python3-zbar python3-serial zip unzip v4l-utils -y
 sudo apt install nvidia-cuda-toolkit -y
