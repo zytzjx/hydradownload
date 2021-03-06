@@ -71,7 +71,7 @@ def deploy_deviceprofile():
             json.dump({
                 'syncclient': local_dp,
                 'readableid': local_dp_by_readableid
-            }, f)
+            }, f, indent=4)
         # update clientsync.json
         if len(local_dp) > 0:
             with open(os.path.join(athena_home, 'clientsync.json')) as f:
@@ -80,7 +80,7 @@ def deploy_deviceprofile():
             for dp in local_dp:
                 cs['sync']['status']['deviceprofile']['filelist'].append(dp)
             with open(os.path.join(athena_home, 'clientsync.json'), 'w') as f:
-                json.dump(cs, f)
+                json.dump(cs, f, indent=4)
     log.info('deploy_deviceprofile: --')
 
 def deploy_frameword(rc):
@@ -116,7 +116,7 @@ def update_client_sync(fw_info):
     ###
     # save clientsync.json
     with open(fn,'w') as f:
-        json.dump(cs, f)
+        json.dump(cs, f, indent=4)
     log.info('update_client_sync: --')
 
 def deploy():
