@@ -47,7 +47,7 @@ sudo pip3 install gphoto2
 sudo pip3 install redis
 sudo pip3 install pyqt5 pyqtchart
 sudo pip3 install pyserial
-sudo pip3 install willow imutils pandas scikit-image
+sudo pip3 install willow imutils pandas scikit-image==0.17.2
 sudo pip3 install pyzbar exif v4l2ctl
 sudo pip3 install python-stdnum JPype1 pyro4 psutil
 sudo pip3 install tensorflow==2.3.0
