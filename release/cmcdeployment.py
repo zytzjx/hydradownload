@@ -119,6 +119,14 @@ def update_client_sync(fw_info):
         json.dump(cs, f, indent=4)
     log.info('update_client_sync: --')
 
+def post_deploy():
+    log.info('post_deploy: ++')
+    fn = os.path.join(athena_home, 'post_deploy.py')
+    if os.path.exists(fn):
+        p = subprocess.Popen([sys.executable, fn], cwd=athena_home)
+        p.wait()
+    log.info('post_deploy: ++')
+    
 def deploy():
     log.info('deploy: ++')
     rc = redis.Redis(decode_responses=True)
@@ -129,6 +137,7 @@ def deploy():
     # deploy deviceprofile
     deploy_deviceprofile()
     rc.close()
+    post_deploy()
     log.info('deploy: --')    
 
 if __name__ == '__main__':
