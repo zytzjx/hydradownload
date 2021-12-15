@@ -105,7 +105,7 @@ func CreateClientStatus() error {
 
 func main() {
 	Log.NewLogger("updatecmc")
-	Log.Log.Info("version:21.8.10.0; author:Jeffery zhang")
+	Log.Log.Info("version:21.12.15.0; author:Jeffery zhang")
 
 	status, _ := dmc.GetString("hydradownload.status")
 	if status == "pause" {
