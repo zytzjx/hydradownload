@@ -44,7 +44,7 @@ sudo apt install gphoto2 libgphoto2-dev qt5-default python3-zbar python3-serial 
 sudo apt install nvidia-cuda-toolkit -y
 
 sudo pip3 install gphoto2
-sudo pip3 install redis
+sudo pip3 install redis flask
 sudo pip3 install pyqt5 pyqtchart
 sudo pip3 install pyserial
 sudo pip3 install willow imutils pandas scikit-image==0.17.2
