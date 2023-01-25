@@ -12,3 +12,8 @@ bash setup.sh
 需要重启机器。
 Copy测试使用Yan准备的15套照片到测试电脑上，
 目录：\\10.1.1.27\Engshare\Athena\Demo_0820\demo_0820_data
+
+安装后，
+1. 将3个相机的串号写在redis里面。
+2. 将机台的串口的串号写在redis里面。
+3. 将powermanager设成service
