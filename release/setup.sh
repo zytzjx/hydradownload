@@ -44,14 +44,21 @@ sudo apt install gphoto2 libgphoto2-dev qt5-default python3-zbar python3-serial 
 sudo apt install nvidia-cuda-toolkit -y
 
 sudo pip3 install gphoto2
-sudo pip3 install redis flask
+sudo pip3 install redis
 sudo pip3 install pyqt5 pyqtchart
 sudo pip3 install pyserial
-sudo pip3 install willow imutils pandas scikit-image==0.17.2
+sudo pip3 install willow imutils 
 sudo pip3 install pyzbar exif v4l2ctl
 sudo pip3 install python-stdnum JPype1 pyro4 psutil
 sudo pip3 install ruamel_yaml
 sudo pip3 install tensorflow==2.3.0
+sudo pip3 install protobuf==3.14.0
+sudo pip3 install numpy==1.17.4
+sudo pip3 install pandas==1.1.5
+sudo pip3 install scikit-image==0.17.2
+sudo pip3 install matplotlib==3.3.3
+sudo pip3 install Flask==2.0.1
+sudo pip3 install Werkzeug==2.0.1
 
 # cd /opt/futuredial/athena.release
 cd $ATHENAHOME
