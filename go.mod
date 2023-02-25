@@ -9,8 +9,9 @@ require (
 	github.com/juju/fslock v0.0.0-20160525022230-4d5c94c67b4b
 	github.com/lestrrat-go/strftime v1.0.3 // indirect
 	github.com/tebeka/strftime v0.1.5 // indirect
-	github.com/zytzjx/anthenacmc v0.0.0-20200731022322-feaddb7482d7
+	github.com/zytzjx/anthenacmc v0.0.0-20211215235619-5033895fb1f4
 	golang.org/x/net v0.0.0-20200707034311-ab3426394381 // indirect
-	golang.org/x/sys v0.0.0-20200728102440-3e129f6d46b1 // indirect
+	golang.org/x/sys v0.1.0 // indirect
 )
+
 replace github.com/zytzjx/anthenacmc v0.0.0-20200731022322-feaddb7482d7 => /home/qa/works/src/github.com/zytzjx/anthenacmc
